@@ -31,4 +31,9 @@ return [
         ],
     ],
 
+    'tmdb' => [
+        'endpoint' => env('https://api.themoviedb.org/3/'),
+        'api' => env('f4afa8bf5e5b676588b444a731146a63'),
+    ],
+
 ];

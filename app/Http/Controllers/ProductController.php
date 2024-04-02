@@ -40,7 +40,7 @@ class ProductController extends Controller
        
 		Product::create($request->all());
          
-        return redirect()->route('products.index')->with('success','Produto criado com sucesso.');
+        return redirect()->route('products.index')->with('success','Filme criado com sucesso.');
     }
   
     /**
@@ -70,7 +70,7 @@ class ProductController extends Controller
         
         $product->update($request->all());
         
-        return redirect()->route('products.index')->with('success','Produto atualizado com sucesso.');
+        return redirect()->route('products.index')->with('success','Filme atualizado com sucesso.');
     }
   
     /**
@@ -80,6 +80,21 @@ class ProductController extends Controller
     {
         $product->delete();
          
-        return redirect()->route('products.index')->with('success','Produto removido com sucesso.');
+        return redirect()->route('products.index')->with('success','Filme removido com sucesso.');
+    }
+
+    public function demo(){
+
+        $tmdb_id = 436270; //Black Adam (2022) Movie TMDB ID
+
+        $data = Http::asJson()
+            ->get(config('services.tmdb.endpoint').'movie/'.$tmdb_id. '?api_key='.config('services.tmdb.api'));
+            
+        // {{-- return view('products.create'); --}} 
+
+        return view('products.create', [
+            'data' => $data,
+            'tmdb_id' => $tmdb_id
+        ]);
     }
 }

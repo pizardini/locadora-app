@@ -1,53 +1,19 @@
-@extends('products.layout')
-@extends('adminlte::page')
-  
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Adicionar Produto</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('products.index') }}"> Voltar</a>
-        </div>
-    </div>
-</div>
-   
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-   
-<form action="{{ route('products.store') }}" method="POST">
-    @csrf
-  
-     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nome:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Nome">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Detalhe:</strong>
-                <textarea class="form-control" style="height:150px" name="detail" placeholder="Detalhe"></textarea>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-        </div>
-    </div>
-   
-</form>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <title>Working with TMDb API in Laravel 9 - LaravelTuts</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <!-- TailwindCss CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="antialiased">
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
@@ -96,6 +62,14 @@
 
                     </div>
                 </div>
+
+                <div class="text-center text-sm text-gray-500 sm:text-center my-5">
+                    Tutorial By 
+                    <a href="https://laraveltuts.com" class="ml-1 underline">
+                        LaravelTuts.com
+                    </a>
+                </div>
             </div>
         </div>
-@endsection
+    </body>
+</html>
