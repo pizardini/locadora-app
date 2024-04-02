@@ -1,14 +1,14 @@
-@extends('products.layout')
+@extends('customers.layout')
 @extends('adminlte::page')
   
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Adicionar Produto</h2>
+            <h2>Adicionar Cliente</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('products.index') }}"> Voltar</a>
+            <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
     </div>
 @endif
    
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('customers.store') }}" method="POST">
     @csrf
   
      <div class="row">

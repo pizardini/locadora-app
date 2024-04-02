@@ -1,14 +1,14 @@
-@extends('products.layout')
+@extends('customers.layout')
 @extends('adminlte::page')
  
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Catálogo de Filmes</h2>
+                <h2>Cadastro de Clientes</h2>
             </div>
             <!-- <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Cadastrar Filme</a>
+                <a class="btn btn-success" href="{{ route('customers.create') }}"> Cadastrar Cliente</a>
             </div> -->
         </div>
     </div>
@@ -26,17 +26,17 @@
             <th>Detalhes</th>
             <th width="280px">Ação</th>
         </tr>
-        @foreach ($products as $product)
+        @foreach ($customers as $customer)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td>
+            <td>{{ $customer->name }}</td>
+            <td>{{ $customer->detail }}</td>
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('customers.destroy',$customer->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Exibir</a>
+                    <a class="btn btn-info" href="{{ route('customers.show',$customer->id) }}">Exibir</a>
     
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Editar</a>
+                    <a class="btn btn-primary" href="{{ route('customers.edit',$customer->id) }}">Editar</a>
    
                     @csrf
                     @method('DELETE')
@@ -48,6 +48,6 @@
         @endforeach
     </table>
   
-    {!! $products->links() !!}
+    {!! $customers->links() !!}
       
 @endsection

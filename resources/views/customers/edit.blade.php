@@ -1,4 +1,4 @@
-@extends('products.layout')
+@extends('customers.layout')
 @extends('adminlte::page')
    
 @section('content')
@@ -8,7 +8,7 @@
                 <h2>Editar Produto</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Voltar</a>
+                <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         </div>
     @endif
   
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
+    <form action="{{ route('customers.update',$customer->id) }}" method="POST">
         @csrf
         @method('PUT')
    
@@ -32,13 +32,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nome:</strong>
-                    <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Nome">
+                    <input type="text" name="name" value="{{ $customer->name }}" class="form-control" placeholder="Nome">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Detalhe:</strong>
-                    <textarea class="form-control" style="height:150px" name="detail" placeholder="Detalhe">{{ $product->detail }}</textarea>
+                    <textarea class="form-control" style="height:150px" name="detail" placeholder="Detalhe">{{ $customer->detail }}</textarea>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
