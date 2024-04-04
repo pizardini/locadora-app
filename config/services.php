@@ -32,8 +32,8 @@ return [
     ],
 
     'tmdb' => [
-        'endpoint' => env('TMDB_ENDPOINT', 'https://api.themoviedb.org/3/'),
-        'api' => env('TMDB_APP_KEY', 'f4afa8bf5e5b676588b444a731146a63'),
+        'endpoint' => env('TMDB_ENDPOINT'),
+        'api' => env('TMDB_APP_KEY'),
     ],
 
 ];

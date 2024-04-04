@@ -26,14 +26,17 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        $tmdb_id = 436270; //Black Adam (2022) Movie TMDB ID
+        // $tmdb_id = 436270; //Black Adam (2022) Movie TMDB ID
 
-        $data = Http::asJson()
-            ->get(config('services.tmdb.endpoint').'movie/'.$tmdb_id. '?api_key='.config('services.tmdb.api'));
+        // $data = Http::asJson()
+        //     ->get(config('services.tmdb.endpoint').'movie/'.$tmdb_id. '?api_key='.config('services.tmdb.api'));
 
+        // return view('products.create',compact('data'));
 
-        // return view('products.create');
-        return view('products.create',compact('data'));
+        $apiKey = config('services.tmdb.api');
+        $tmdbEndpoint = config('services.tmdb.endpoint');
+        
+        return view('products.create', compact('apiKey', 'tmdbEndpoint'));
     }
   
     /**
