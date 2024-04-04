@@ -43,7 +43,7 @@
     </div>
     <div class="col-md-6">
         <div id="movieCoverContainer" class="flex items-center p-4 ml-md-3">
-            <img id="movieCoverImage" src="#" alt="Capa do Filme" style="height:350px" class="rounded img-fluid">
+            <img id="movieCoverImage" name="cover" src="#" alt="Capa do Filme" style="height:350px" class="rounded img-fluid">
         </div>
     </div>
 </div>
