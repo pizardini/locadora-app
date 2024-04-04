@@ -62,13 +62,6 @@
 
                     </div>
                 </div>
-
-                <div class="text-center text-sm text-gray-500 sm:text-center my-5">
-                    Tutorial By 
-                    <a href="https://laraveltuts.com" class="ml-1 underline">
-                        LaravelTuts.com
-                    </a>
-                </div>
             </div>
         </div>
     </body>

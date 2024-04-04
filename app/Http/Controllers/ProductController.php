@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Http;
   
 class ProductController extends Controller
 {
@@ -25,7 +26,14 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view('products.create');
+        $tmdb_id = 436270; //Black Adam (2022) Movie TMDB ID
+
+        $data = Http::asJson()
+            ->get(config('services.tmdb.endpoint').'movie/'.$tmdb_id. '?api_key='.config('services.tmdb.api'));
+
+
+        // return view('products.create');
+        return view('products.create',compact('data'));
     }
   
     /**
@@ -81,20 +89,5 @@ class ProductController extends Controller
         $product->delete();
          
         return redirect()->route('products.index')->with('success','Filme removido com sucesso.');
-    }
-
-    public function demo(){
-
-        $tmdb_id = 436270; //Black Adam (2022) Movie TMDB ID
-
-        $data = Http::asJson()
-            ->get(config('services.tmdb.endpoint').'movie/'.$tmdb_id. '?api_key='.config('services.tmdb.api'));
-            
-        // {{-- return view('products.create'); --}} 
-
-        return view('products.create', [
-            'data' => $data,
-            'tmdb_id' => $tmdb_id
-        ]);
     }
 }
