@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
 			$table->string('name');
             $table->text('detail');
-            $table->string('cover');
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }

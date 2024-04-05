@@ -43,7 +43,8 @@
     </div>
     <div class="col-md-6">
         <div id="movieCoverContainer" class="flex items-center p-4 ml-md-3">
-            <img id="movieCoverImage" name="cover" src="#" alt="Capa do Filme" style="height:350px" class="rounded img-fluid">
+            <input type="hidden" name="cover" id="coverInput">
+            <img id="movieCoverImage" src="#" alt="Capa do Filme" style="height:350px" class="rounded img-fluid">
         </div>
     </div>
 </div>
@@ -129,6 +130,8 @@
                 var movieCoverImage = document.getElementById('movieCoverImage');
                 movieCoverImage.src = movieCoverUrl;
                 movieCoverImage.style.display = 'block';
+
+                document.getElementById('coverInput').value = movieCoverUrl;
 
             // Atualiza a sinopse do filme na página
             var overview = document.getElementById('overview');
