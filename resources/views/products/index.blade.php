@@ -22,6 +22,7 @@
     <table class="table table-bordered">
         <tr>
             <th>#</th>
+            <th>Capa</th>
             <th>Nome</th>
             <th>Detalhes</th>
             <th width="280px">Ação</th>
@@ -29,6 +30,7 @@
         @foreach ($products as $product)
         <tr>
             <td>{{ ++$i }}</td>
+            <td><img src="{{ $product->cover }}" alt="Capa do Filme" style="height: 100px;"></td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->detail }}</td>
             <td>
