@@ -1,8 +1,6 @@
 
 @extends('adminlte::page')
 
-
-  
 @section('content')
     @include('products.layout')
     <div class="row">
@@ -135,7 +133,7 @@
 
             // Atualiza a sinopse do filme na página
             var overview = document.getElementById('overview');
-            overview.textContent = data.overview;
+            overview.value = data.overview;
             })
             .catch(error => {
                 console.error('Erro ao buscar capa do filme:', error);

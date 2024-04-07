@@ -60,7 +60,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product): View
     {
-        return view('products.edit',compact('product'));
+        $apiKey = config('services.tmdb.api');
+        $tmdbEndpoint = config('services.tmdb.endpoint');
+
+        return view('products.edit',compact('product', 'apiKey','tmdbEndpoint'));
     }
   
     /**
