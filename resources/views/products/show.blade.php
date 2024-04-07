@@ -29,5 +29,6 @@
                 {{ $product->detail }}
             </div>
         </div>
+        teste
     </div>
 @endsection
