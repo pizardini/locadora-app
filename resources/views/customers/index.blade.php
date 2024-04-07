@@ -23,14 +23,18 @@
         <tr>
             <th>#</th>
             <th>Nome</th>
-            <th>Detalhes</th>
-            <th width="280px">Ação</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th width="280px">Ações</th>
         </tr>
         @foreach ($customers as $customer)
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $customer->name }}</td>
-            <td>{{ $customer->detail }}</td>
+            <td>{{ $customer->cpf }}</td>
+            <td>{{ $customer->telefone }}</td>
+            <td>{{ $customer->endereco }}</td>
             <td>
                 <form action="{{ route('customers.destroy',$customer->id) }}" method="POST">
    

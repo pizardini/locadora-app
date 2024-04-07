@@ -8,11 +8,11 @@
                 <h2> Exibir Cliente</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
+                <a class="btn btn-primary" href="{{ route('customers.index') }}">Voltar</a>
             </div>
         </div>
     </div>
-   
+    <br>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -22,8 +22,20 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Detalhes:</strong>
-                {{ $customer->detail }}
+                <strong>CPF:</strong>
+                {{ $customer->cpf }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Telefone:</strong>
+                {{ $customer->telefone }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Endereço:</strong>
+                {{ $customer->endereco }}
             </div>
         </div>
     </div>

@@ -7,9 +7,6 @@
             <div class="pull-left">
                 <h2>Catálogo de Filmes</h2>
             </div>
-            <!-- <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Cadastrar Filme</a>
-            </div> -->
         </div>
     </div>
    
@@ -25,7 +22,7 @@
             <th>Capa</th>
             <th>Nome</th>
             <th>Detalhes</th>
-            <th width="280px">Ação</th>
+            <th width="280px">Ações</th>
         </tr>
         @foreach ($products as $product)
         <tr>

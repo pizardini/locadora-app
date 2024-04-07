@@ -34,7 +34,9 @@ class CustomerController extends Controller
     public function store(Request $request): RedirectResponse {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'cpf' => 'required|regex:/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/',
+            'telefone' => 'required',
+            'endereco' => 'required',
         ]);
 		
        
@@ -65,7 +67,9 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'cpf' => 'required|regex:/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/',
+            'telefone' => 'required',
+            'endereco' => 'required',
         ]);
         
         $customer->update($request->all());
