@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Http;
   
 class ProductController extends Controller
 {
@@ -25,7 +26,10 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view('products.create');
+        $apiKey = config('services.tmdb.api');
+        $tmdbEndpoint = config('services.tmdb.endpoint');
+        
+        return view('products.create', compact('apiKey', 'tmdbEndpoint'));
     }
   
     /**
@@ -35,12 +39,13 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
+            'cover' => 'nullable',
         ]);
 		
        
 		Product::create($request->all());
          
-        return redirect()->route('products.index')->with('success','Produto criado com sucesso.');
+        return redirect()->route('products.index')->with('success','Filme criado com sucesso.');
     }
   
     /**
@@ -70,7 +75,7 @@ class ProductController extends Controller
         
         $product->update($request->all());
         
-        return redirect()->route('products.index')->with('success','Produto atualizado com sucesso.');
+        return redirect()->route('products.index')->with('success','Filme atualizado com sucesso.');
     }
   
     /**
@@ -80,6 +85,6 @@ class ProductController extends Controller
     {
         $product->delete();
          
-        return redirect()->route('products.index')->with('success','Produto removido com sucesso.');
+        return redirect()->route('products.index')->with('success','Filme removido com sucesso.');
     }
 }

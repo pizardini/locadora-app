@@ -1,14 +1,15 @@
-@extends('products.layout')
+@extends('adminlte::page')
  
 @section('content')
+    @include('products.layout')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel 10 CRUD</h2>
+                <h2>Catálogo de Filmes</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Cadastrar Produto</a>
-            </div>
+            <!-- <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('products.create') }}"> Cadastrar Filme</a>
+            </div> -->
         </div>
     </div>
    
@@ -21,6 +22,7 @@
     <table class="table table-bordered">
         <tr>
             <th>#</th>
+            <th>Capa</th>
             <th>Nome</th>
             <th>Detalhes</th>
             <th width="280px">Ação</th>
@@ -28,6 +30,7 @@
         @foreach ($products as $product)
         <tr>
             <td>{{ ++$i }}</td>
+            <td><img src="{{ $product->cover }}" alt="Capa do Filme" style="height: 100px;"></td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->detail }}</td>
             <td>
