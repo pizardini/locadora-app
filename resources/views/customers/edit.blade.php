@@ -5,10 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Adicionar Cliente</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
+            <h2>Editar Cliente</h2>
         </div>
     </div>
 </div>
@@ -23,42 +20,48 @@
         </ul>
     </div>
 @endif
-   
-<form action="{{ route('customers.update',$customer->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-  
-     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nome Completo:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Nome" value="{{ $customer->name }}">
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Quick Example</h3>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>CPF:</strong>
-                <input type="text" name="cpf" class="form-control" placeholder="CPF" value="{{ $customer->cpf }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Telefone:</strong>
-                <input type="text" name="telefone" class="form-control brcel" placeholder="Telefone" value="{{ $customer->cpf }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Endereço:</strong>
-                <input type="text" name="endereco" class="form-control" placeholder="Endereço" value="{{ $customer->endereco }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+
+            <form action="{{ route('customers.update',$customer->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" class="form-control" id="name" placeholder="Nome" name="name" value="{{ $customer->name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" >
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="___.___.___-__" value="{{ $customer->cpf }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" class="form-control brcel" id="telefone" name="telefone" placeholder="(XX) 0-0000-0000" value="{{ $customer->telefone }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço</label>
+                        <input type="text" class="form-control" id="endereco" placeholder="Endereço" name="endereco" value="{{ $customer->endereco }}">
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
+                </div>
+            </form>
         </div>
     </div>
-   
-</form>
+</div>
 @endsection
 
 @section('js')
