@@ -5,7 +5,6 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Adicionar Cliente</h2>
         </div>
     </div>
 </div>
@@ -24,7 +23,7 @@
     <div class="col-md-6">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">Cadastrar Cliente</h3>
             </div>
 
             <form action="{{ route('customers.store') }}" method="POST">

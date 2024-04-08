@@ -5,10 +5,6 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Adicionar Filme</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Voltar</a>
             </div>
         </div>
     </div>
@@ -24,37 +20,41 @@
         </div>
     @endif
     
-    <form action="{{ route('products.store') }}" method="POST">
-    @csrf
-    
     <div class="row">
     <div class="col-md-6">
-        <div class="form-group">
-            <strong>Titulo:</strong>
-            <input id="name" type="text" name="name" class="form-control" placeholder="Nome">
-        </div>
-        <div class="form-group">
-            <strong>Sinopse:</strong>
-            <textarea id="overview" class="form-control" style="height:150px" name="detail" placeholder="Detalhes do filme"></textarea>
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Adicionar Filme</h3>
+            </div>
+
+            <form action="{{ route('products.store') }}" method="POST">
+            @csrf
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Título</label>
+                        <input type="text" class="form-control" id="name" placeholder="Nome" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="detail">Sinopse</label>
+                        <textarea class="form-control" id="overview" name="detail" rows="4" placeholder="Sinopse do Filme..."></textarea>
+                    </div>
+                    <input type="hidden" name="cover" id="coverInput">
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <a class="btn btn-outline-primary" href="{{ route('products.index') }}"> Voltar</a>
+                    <button type="button" class="btn btn-warning" onclick="getMovieCover()">Pegar Infos do filme</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="col-md-6">
         <div id="movieCoverContainer" class="flex items-center p-4 ml-md-3">
-            <input type="hidden" name="cover" id="coverInput">
             <img id="movieCoverImage" src="#" alt="Capa do Filme" style="height:350px" class="rounded img-fluid">
         </div>
     </div>
 </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="button" class="btn btn-primary" onclick="getMovieCover()">Pegar Infos do filme</button>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </div>
-    
-    </form>
-
-
 @endsection
 
 @section('js')
