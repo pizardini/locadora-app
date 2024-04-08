@@ -298,7 +298,7 @@ return [
         [
             'type' => 'navbar-search',
             'text' => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type' => 'fullscreen-widget',
@@ -308,7 +308,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'busca',
         ],
         [
             'text' => 'blog',
