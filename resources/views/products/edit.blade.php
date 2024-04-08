@@ -127,9 +127,9 @@
 
                 document.getElementById('coverInput').value = movieCoverUrl;
 
-            // Atualiza a sinopse do filme na página
-            var overview = document.getElementById('overview');
-            overview.value = data.overview;
+                // Atualiza a sinopse do filme na página
+                var overview = document.getElementById('overview');
+                overview.value = data.overview;
             })
             .catch(error => {
                 console.error('Erro ao buscar capa do filme:', error);
