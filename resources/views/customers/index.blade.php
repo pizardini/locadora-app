@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Cadastro de Clientes</h2>
+                <h2>Lista de Clientes</h2>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <th>Endereço</th>
             <th width="280px">Ações</th>
         </tr>
-        @foreach ($customers as $customer)
+        {{-- @foreach ($customers as $customer)
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $customer->name }}</td>
@@ -47,7 +47,7 @@
                 </form>
             </td>
         </tr>
-        @endforeach
+        @endforeach --}}
     </table> -->
 
 <div class="row">
