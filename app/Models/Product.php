@@ -9,4 +9,8 @@ class Product extends Model
 
 	protected $guarded = array();
 
+	public function rents()
+    {
+        return $this->hasMany(Rent::class);
+    }
 }

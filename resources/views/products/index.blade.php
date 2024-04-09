@@ -67,6 +67,7 @@
                     @endforeach
                     </tbody>
                     </table>
+                    <a href="/products/create" class="btn btn-sm btn-info float-right">Novo Filme</a>
                 </div>
             </div>
         </div>
