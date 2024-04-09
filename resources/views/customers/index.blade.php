@@ -47,6 +47,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <a href="/customers/create" class="btn btn-sm btn-info float-right">Novo Cliente</a>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label for="product_id">Filme</label>
                         <select class="form-control" id="product_id" name="product_id" style="height: 37px">
-                            <!-- <option value="">Selecione o Filme</option> -->
+                            <option value="">Selecione o Filme</option>
                             @foreach($products as $product)
                             <option value="{{ $product->id }}">{{ $product->name }}</option>
                             @endforeach
@@ -57,12 +57,12 @@
                     </div>
                     <div class="form-group">
                         <label for="return_date">Prazo de Devolução</label>
-                        <input type="date" class="form-control" id="return_date" name="return_date">
+                        <input type="date" class="form-control" id="return_date" name="return_date" value="{{ \Carbon\Carbon::parse(date('Y-m-d'))->addDays(7)->format('Y-m-d') }}">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="returned_at">Data de Devolução</label>
                         <input type="date" class="form-control" id="returned_at" name="returned_at">
-                    </div>
+                    </div> -->
                     <!-- <div class="form-group">
                         <label for="active">Ativa</label>
                         <select class="form-control" id="active" name="active">
@@ -71,18 +71,18 @@
                         </select>
                     </div> -->
                     <div class="form-group">
-                        <label for="total_amount">Valor Total</label>
+                        <label for="total_amount">Valor</label>
                         <input type="text" class="form-control" id="total_amount" name="total_amount">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="late_fee">Taxa de Atraso</label>
-                        <input type="text" class="form-control" id="late_fee" name="late_fee">
-                    </div>
+                        <input type="hidden" type="text" class="form-control" id="late_fee" name="late_fee">
+                    </div> -->
                 </div>
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                    <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
+                    <a class="btn btn-primary" href="{{ URL::previous() }}">Voltar</a>
                 </div>
             </form>
         </div>
@@ -109,8 +109,8 @@
             placeholder: 'Selecione o Filme',
             allowClear: false,
             width: '100%',
-            height: '2px'
-            theme: 'default',
+            height: '37px',
+            theme: 'classic',
         });
     });
 </script>
