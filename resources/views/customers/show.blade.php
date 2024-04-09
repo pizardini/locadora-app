@@ -50,16 +50,21 @@
                                 <dd>{{ $rent->product->name }}</dd>
                                 <dt>Data de Locação</dt>
                                 <dd>{{ $rent->rental_date }}</dd>
-                                <dt>Data de Devolução</dt>
+                                <dt>Prazo de Devolução</dt>
                                 <dd>{{ $rent->return_date }}</dd>
-                                <dt>Data de Retorno</dt>
-                                <dd>{{ $rent->returned_at }}</dd>
-                                <dt>Alugado</dt>
-                                <dd>{{ $rent->active ? 'Sim' : 'Não' }}</dd>
-                                <dt>Valor Total</dt>
-                                <dd>R${{ $rent->total_amount }}</dd>
-                                <dt>Taxa de Atraso</dt>
-                                <dd>{{ $rent->late_fee }}</dd>
+                                    @if ($rent->active)
+                                        <dt>Alugado</dt>
+                                        <dd>Sim</dd>
+                                        <dt>Valor Total</dt>
+                                        <dd>R${{ $rent->total_amount }}</dd>
+                                    @else
+                                        <dt>Data de Devolução</dt>
+                                        <dd>{{ $rent->returned_at }}</dd>
+                                        <dt>Taxa de Atraso</dt>
+                                        <dd>{{ $rent->late_fee }}</dd>
+                                        <dt>Valor Total</dt>
+                                        <dd>R${{ $rent->total_amount }}</dd>
+                                    @endif
                             </dl>
                         @endforeach
                 @else

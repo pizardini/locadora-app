@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Product::class);
             $table->foreignIdFor(Customer::class);
-            $table->timestamp('rental_date')->useCurrent();
-            $table->timestamp('return_date')->nullable();
-            $table->timestamp('returned_at')->nullable();
+            $table->date('rental_date')->useCurrent();
+            $table->date('return_date')->nullable();
+            $table->date('returned_at')->nullable();
             $table->boolean('active')->default(true);
             $table->decimal('total_amount')->nullable();
             $table->decimal('late_fee', 8, 2)->nullable();

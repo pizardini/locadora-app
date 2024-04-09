@@ -56,11 +56,11 @@
                         <input type="date" class="form-control" id="rental_date" name="rental_date" value="{{ date('Y-m-d') }}">
                     </div>
                     <div class="form-group">
-                        <label for="return_date">Data de Devolução</label>
+                        <label for="return_date">Prazo de Devolução</label>
                         <input type="date" class="form-control" id="return_date" name="return_date">
                     </div>
                     <div class="form-group">
-                        <label for="returned_at">Data de Retorno</label>
+                        <label for="returned_at">Data de Devolução</label>
                         <input type="date" class="form-control" id="returned_at" name="returned_at">
                     </div>
                     <!-- <div class="form-group">
@@ -82,7 +82,7 @@
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                    <a class="btn btn-primary" href="{{ route('rents.index') }}"> Voltar</a>
+                    <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
                 </div>
             </form>
         </div>
