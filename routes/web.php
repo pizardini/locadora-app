@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\RentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,17 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class);
 Route::resource('customers', CustomerController::class);
+Route::resource('rents', RentController::class);
+
+Route::get('/rents/create/{customerId}', [RentController::class, 'create'])->name('rents.create');
+
 
 
 // Solicitação de autenticação nas rotas internas
 // Route::middleware('auth')->group(function () {
 //     Route::resource('products', ProductController::class);
 //     Route::resource('customers', CustomerController::class);
+//      Route::resource('rents', CustomerController::class);
 // });
 
 Auth::routes();

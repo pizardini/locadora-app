@@ -385,6 +385,20 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'Locações',
+            'icon' => 'fas fa-fw fa-tv',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Locações',
+                    'url' => '/rents',
+                ],
+                [
+                    'text' => 'Alugar Filme',
+                    'url' => '/rents/create',
+                ],
+            ],
+        ],
         // ['header' => 'labels'],
         // [
         //     'text' => 'important',

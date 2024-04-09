@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}">Voltar</a>
+                <a class="btn btn-primary" href="{{ route('customers.index') }}">Voltar</a> <a class="btn btn-success" href="{{ route('rents.create', ['customerId' => $customer->id]) }}">Alugar</a>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Lista de Clientes</h3>
+                    <h3 class="card-title">Lista de Locações</h3>
                 </div>
 
                 <div class="card-body table-responsive p-0">
@@ -21,27 +21,30 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nome</th>
-                                <th>CPF</th>
-                                <th>Telefone</th>
+                                <th>Cliente</th>
+                                <th>Produto</th>
+                                <th>Data Locação</th>
+                                <th>Data Devolução</th>
+                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($customers as $customer)
+                            @foreach ($rents as $rent)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $customer->name }}</td>
-                                    <td>{{ $customer->cpf }}</td>
-                                    <td>{{ $customer->telefone }}</td>
+                                    <td>{{ $rent->id }}</td>
+                                    <td>{{ $rent->customer->name }}</td>
+                                    <td>{{ $rent->product->name }}</td>
+                                    <td>{{ $rent->rental_date }}</td>
+                                    <td>{{ $rent->return_date }}</td>
+                                    <td>{{ $rent->active ? 'Ativo' : 'Inativo' }}</td>
                                     <td>
-                                        <form action="{{ route('customers.destroy',$customer->id) }}" method="POST">
-                                            <a class="btn btn-info" href="{{ route('customers.show',$customer->id) }}">Exibir</a>
-                                            <a class="btn btn-primary" href="{{ route('customers.edit',$customer->id) }}">Editar</a>
+                                    <form action="{{ route('rents.destroy', $rent->id) }}" method="POST">
+                                            <a class="btn btn-info" href="{{ route('rents.show', $rent->id) }}">Exibir</a>
+                                            <a class="btn btn-primary" href="{{ route('rents.edit', $rent->id) }}">Editar</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Remover</button>
-                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
