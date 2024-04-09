@@ -1,14 +1,11 @@
-@extends('customers.layout')
 @extends('adminlte::page')
   
 @section('content')
-    <div class="row">
+    @include('rents.layout')
+    <!-- <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Exibir Cliente</h2>
-            </div>
         </div>
-    </div>
+    </div> -->
     <br>
     <div class="row">
         <div class="col-md-6">
@@ -16,7 +13,7 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-text-width"></i>
-                    Cliente
+                    Dados Cadastrais
                     </h3>
                 </div>
                 <div class="card-body">
@@ -33,8 +30,43 @@
                 </div>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}">Voltar</a> <a class="btn btn-success" href="{{ route('rents.create', ['customerId' => $customer->id]) }}">Alugar</a>
+                <a class="btn btn-primary" href="{{ route('customers.index') }}">Voltar</a> <a class="btn btn-success" href="{{ route('rents.create', ['customerId' => $customer->id]) }}">Alugar Filme</a>
             </div>
         </div>
+        <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-text-width"></i>
+                    Locações do Cliente
+                </h3>
+            </div>
+            <div class="card-body">
+                @if ($rents->count() > 0)
+                        @foreach ($rents as $rent)
+                            <dl>
+                            
+                                <dt>Nome do Filme</dt>
+                                <dd>{{ $rent->product->name }}</dd>
+                                <dt>Data de Locação</dt>
+                                <dd>{{ $rent->rental_date }}</dd>
+                                <dt>Data de Devolução</dt>
+                                <dd>{{ $rent->return_date }}</dd>
+                                <dt>Data de Retorno</dt>
+                                <dd>{{ $rent->returned_at }}</dd>
+                                <dt>Alugado</dt>
+                                <dd>{{ $rent->active ? 'Sim' : 'Não' }}</dd>
+                                <dt>Valor Total</dt>
+                                <dd>R${{ $rent->total_amount }}</dd>
+                                <dt>Taxa de Atraso</dt>
+                                <dd>{{ $rent->late_fee }}</dd>
+                            </dl>
+                        @endforeach
+                @else
+                    <p>O cliente não possui locações.</p>
+                @endif
+            </div>
+        </div>
+    </div>
     </div>
 @endsection

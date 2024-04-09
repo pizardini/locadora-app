@@ -49,7 +49,9 @@ class CustomerController extends Controller
      * Display the specified resource.
      */
     public function show(Customer $customer): View{
-        return view('customers.show',compact('customer'));
+        
+        $rents = $customer->rents;
+        return view('customers.show',compact('customer', 'rents'));
     }
   
     /**
