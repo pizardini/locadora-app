@@ -20,8 +20,9 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>#</th>
                                 <th>Nome</th>
+                                <th>Email</th>
                                 <th>CPF</th>
                                 <th>Telefone</th>
                                 <th>Ações</th>
@@ -32,6 +33,7 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->cpf }}</td>
                                     <td>{{ $customer->telefone }}</td>
                                     <td>

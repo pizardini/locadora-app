@@ -33,6 +33,7 @@
                     <th>ID</th>
                     <th>Capa</th>
                     <th>Título</th>
+                    <th>Ano</th>
                     <th>Ações</th>
                     </tr>
                     </thead>
@@ -43,6 +44,7 @@
                     <td>{{ ++$i }}</td>
                     <td><img src="{{ $product->cover }}" alt="Capa do Filme" style="height: 100px;"></td>
                     <td>{{ $product->name }}</td>
+                    <td>{{ $product->release }}</td>
                                 <td>
                                     <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     

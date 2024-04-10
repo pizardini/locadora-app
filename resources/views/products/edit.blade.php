@@ -36,6 +36,10 @@
                         <input type="text" class="form-control" id="name" placeholder="Nome" name="name" value="{{ $product->name }}">
                     </div>
                     <div class="form-group">
+                        <label for="name">Ano de Lançamento</label>
+                        <input type="text" class="form-control" id="release" placeholder="Ano" name="release" value="{{ $product->release }}">
+                    </div>
+                    <div class="form-group">
                         <label for="detail">Sinopse</label>
                         <textarea class="form-control" id="overview" name="detail" rows="4" placeholder="Sinopse do Filme...">{{ $product->detail }}</textarea>
                     </div>
@@ -130,6 +134,12 @@
                 // Atualiza a sinopse do filme na página
                 var overview = document.getElementById('overview');
                 overview.value = data.overview;
+
+                var releaseDate = new Date(data.release_date);
+                var releaseYear = releaseDate.getFullYear();
+
+                var release = document.getElementById('release');
+                release.value = releaseYear;
             })
             .catch(error => {
                 console.error('Erro ao buscar capa do filme:', error);

@@ -20,6 +20,8 @@
                     <dl>
                         <dt>Nome</dt>
                         <dd>{{ $customer->name }}</dd>
+                        <dt>Email</dt>
+                        <dd>{{ $customer->email }}</dd>
                         <dt>CPF</dt>
                         <dd>{{ $customer->cpf }}</dd>
                         <dt>Telefone</dt>

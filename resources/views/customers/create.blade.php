@@ -34,8 +34,8 @@
                         <input type="text" class="form-control" id="name" placeholder="Nome" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="cpf">CPF</label>
