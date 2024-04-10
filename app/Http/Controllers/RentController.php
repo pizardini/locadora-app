@@ -54,6 +54,11 @@ class RentController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        $request->merge([
+            'total_amount' => str_replace(',', '.', $request->input('total_amount')),
+        ]);
+
         $request->validate([
             'product_id' => 'required',
             'customer_id' => 'required',
@@ -83,7 +88,16 @@ class RentController extends Controller
      */
     public function edit(Rent $rent): View
     {
-        return view('rents.edit', compact('rent'));
+
+        $products = Product::all();
+        $customers = Customer::all();
+
+        return view('rents.edit', compact('rent', 'products', 'customers'));
+    }
+
+    public function returnRent(Rent $rent): View
+    {
+        return view('rents.return', compact('rent'));
     }
 
     /**
@@ -91,13 +105,18 @@ class RentController extends Controller
      */
     public function update(Request $request, Rent $rent): RedirectResponse
     {
+        $request->merge([
+            'total_amount' => str_replace(',', '.', $request->input('total_amount')),
+            'late_fee' => str_replace(',', '.', $request->input('late_fee')),
+        ]);
+
         $request->validate([
             'product_id' => 'required',
             'customer_id' => 'required',
             'rental_date' => 'required|date',
             'return_date' => 'nullable|date',
             'returned_at' => 'nullable|date',
-            'active' => 'required|boolean',
+            'active' => 'boolean',
             'total_amount' => 'nullable|numeric',
             'late_fee' => 'nullable|numeric',
         ]);

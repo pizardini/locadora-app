@@ -23,16 +23,17 @@
     <div class="col-md-6">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Cadastrar Locação</h3>
+                <h3 class="card-title">Editar Locação</h3>
             </div>
 
-            <form action="{{ route('rents.store') }}" method="POST">
+            <form action="{{ route('rents.update',$rent->id) }}" method="POST">
             @csrf
+            @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
                         <label for="product_id">Filme</label>
-                        <select class="form-control" id="product_id" name="product_id" style="height: 37px">
-                            <option value="">Selecione o Filme</option>
+                        <select class="form-control" id="product_id" name="product_id" style="height: 37px" value="{{ $rent->product->name }}">
+                            <option value="{{ $rent->product->name }}">{{ $rent->product->name }}</option>
                             @foreach($products as $product)
                             <option value="{{ $product->id }}">{{ $product->name }}</option>
                             @endforeach
@@ -40,39 +41,40 @@
                     </div>
                     <div class="form-group">
                         <label for="customer_id">Cliente</label>
-                        <select class="form-control" id="customer_id" name="customer_id">
-                        @if ($selectedCustomer)
-                            <option value="{{ $selectedCustomer->id }}" selected>{{ $selectedCustomer->name }}</option>
-                        @else
-                            <option value="">Selecione o Cliente</option>
+                        <select class="form-control" id="customer_id" name="customer_id" >
+                            <option value="{{ $rent->customer->name }}" selected>{{ $rent->customer->name }}</option>
                             @foreach($customers as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                             @endforeach
-                        @endif
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="rental_date">Data de Locação</label>
-                        <input type="date" class="form-control" id="rental_date" name="rental_date" value="{{ date('Y-m-d') }}">
+                        <input type="date" class="form-control" id="rental_date" name="rental_date" value="{{ $rent->rental_date }}">
                     </div>
                     <div class="form-group">
                         <label for="return_date">Prazo de Devolução</label>
-                        <input type="date" class="form-control" id="return_date" name="return_date" value="{{ \Carbon\Carbon::parse(date('Y-m-d'))->addDays(7)->format('Y-m-d') }}">
+                        <input type="date" class="form-control" id="return_date" name="return_date" value="{{ $rent->return_date }}">
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="returned_at">Data de Devolução</label>
-                        <input type="date" class="form-control" id="returned_at" name="returned_at">
-                    </div> -->
-                    <!-- <div class="form-group">
+                        <input type="date" class="form-control" id="returned_at" name="returned_at" value="{{ $rent->returned_at }}">
+                    </div>
+                    <div class="form-group">
                         <label for="active">Ativa</label>
-                        <select class="form-control" id="active" name="active">
+                        <select class="form-control" id="active" name="active" value="{{ $rent->active }}">
                             <option value="1">Sim</option>
                             <option value="0">Não</option>
                         </select>
-                    </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="late_fee">Taxa de Atraso</label>
+                        <input type="text" type="text" class="form-control" id="late_fee" name="late_fee" value="{{ $rent->late_fee }}" placeholder="0,00">
+                    </div>
                     <div class="form-group">
                         <label for="total_amount">Valor</label>
-                        <input type="text" class="form-control" id="total_amount" name="total_amount" placeholder="0,00">
+                        <input type="text" class="form-control" id="total_amount" name="total_amount" value="{{ $rent->total_amount }}" placeholder="0,00">
+
                     </div>
                 </div>
 
@@ -96,6 +98,16 @@
 <script src="https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js"></script>
 
 <script>
+    $(function(){
+        $('#late_fee').maskMoney({
+        prefix:'R$ ',
+        allowNegative: false,
+        thousands:'.', decimal:',',
+        affixesStay: true,
+        unmaskAsNumber: true,
+        });
+    });
+
     // $(function(){
     //     $('#total_amount').maskMoney({
     //     prefix:'R$ ',

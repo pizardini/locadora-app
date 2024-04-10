@@ -43,6 +43,8 @@
                                             <a class="btn btn-info" href="{{ route('rents.show', $rent->id) }}">Exibir</a>
                                             <a class="btn btn-primary" href="{{ route('rents.edit', $rent->id) }}">Editar</a>
                                             @csrf
+                                            <a class="btn btn-warning" href="{{ route('rents.return', $rent->id) }}">Devolver</a>
+                                            @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Remover</button>
                                     </td>
