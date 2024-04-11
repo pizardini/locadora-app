@@ -51,7 +51,7 @@
                     @foreach ($products as $product)
 
                     <tr data-widget="expandable-table" aria-expanded="false">
-                    <td>{{ ++$i }}</td>
+                    <td>{{ $product->id }}</td>
                     <td><img src="{{ $product->cover }}" alt="Capa do Filme" style="height: 100px;"></td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->release }}</td>

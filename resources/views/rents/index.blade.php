@@ -2,6 +2,13 @@
 
 @section('content')
     @include('customers.layout')
+
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Lista de Locações Ativas</h3>

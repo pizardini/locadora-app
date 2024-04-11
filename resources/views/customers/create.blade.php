@@ -1,14 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
-@include('customers.layout')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-        </div>
-    </div>
-</div>
-   
+@include('customers.layout')   
 @if ($errors->any())
     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -36,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="user@gmail.com">
                     </div>
                     <div class="form-group">
                         <label for="cpf">CPF</label>
@@ -48,13 +41,13 @@
                     </div>
                     <div class="form-group">
                         <label for="endereco">Endereço</label>
-                        <input type="text" class="form-control" id="endereco" placeholder="Endereço" name="endereco">
+                        <input type="text" class="form-control" id="endereco" placeholder="Rua dos Bobos, nº 0" name="endereco">
                     </div>
                 </div>
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                    <a class="btn btn-primary" href="{{ route('customers.index') }}"> Voltar</a>
+                    <a class="btn btn-outline-primary" href="{{ route('customers.index') }}"> Voltar</a>
                 </div>
             </form>
         </div>
