@@ -51,6 +51,11 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+            {{ $activeRents->links() }}
+            </ul>
+        </div>
     </div>
 
     <div class="card">
@@ -94,5 +99,10 @@
                 </tbody>
             </table>
         </div>
+        <!-- <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+            {{-- {{ $inactiveRents->links() }}  --}} 
+            </ul>
+        </div> -->
     </div>
 @endsection

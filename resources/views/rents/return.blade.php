@@ -67,7 +67,7 @@
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Devolver</button>
-                    <a class="btn btn-outline" href="{{ URL::previous() }}">Voltar</a>
+                    <a class="btn btn-outline-primary" href="{{ URL::previous() }}">Voltar</a>
                 </div>
             </form>
         </div>

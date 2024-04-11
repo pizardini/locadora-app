@@ -79,7 +79,11 @@
                     @endforeach
                     </tbody>
                     </table>
-                    <a href="/products/create" class="btn btn-sm btn-info float-right">Novo Filme</a>
+                </div>
+                <div class="card-footer clearfix">
+                        <ul class="pagination pagination-sm m-0 float-right">
+                        <a href="/products/create" class="btn btn-sm btn-info float-right">Novo Filme</a>   {{ $products->links() }} 
+                        </ul>
                 </div>
             </div>
         </div>

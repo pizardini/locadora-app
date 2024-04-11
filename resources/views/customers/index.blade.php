@@ -58,7 +58,11 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <a href="/customers/create" class="btn btn-sm btn-info float-right">Novo Cliente</a>
+                </div>
+                <div class="card-footer clearfix">
+                        <ul class="pagination pagination-sm m-0 float-right">
+                        <a href="/customers/create" class="btn btn-sm btn-info float-right">Novo Cliente</a>   {{ $customers->links() }} 
+                        </ul>
                 </div>
             </div>
         </div>

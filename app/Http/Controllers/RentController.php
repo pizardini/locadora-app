@@ -16,29 +16,15 @@ class RentController extends Controller
      */
     public function index(): View
     {
-        $rents = Rent::latest()->paginate(5);
-
-        $activeRents = $rents->filter(function ($rent) {
-            return $rent->active;
-        });
+        $activeRents = Rent::where('active', true)->latest()->paginate(5);
+        $inactiveRents = Rent::where('active', false)->latest()->paginate(5);
     
-        $inactiveRents = $rents->filter(function ($rent) {
-            return !$rent->active;
-        });
-
-        return view('rents.index', compact('rents','activeRents','inactiveRents'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('rents.index', compact('activeRents', 'inactiveRents'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    // public function create()
-    // {
-    //     $products = Product::all();
-    //     $customers = Customer::all();
-
-    //     return view('rents.create', compact('products', 'customers'));
-    // }
 
     public function create($customerId = null)
     {

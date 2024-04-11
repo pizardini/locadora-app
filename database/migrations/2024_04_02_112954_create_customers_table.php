@@ -18,6 +18,7 @@ class CreateCustomersTable extends Migration
 			$table->string('name');
             $table->string('email')->unique();
             $table->string('cpf')->unique();
+            $table->date('born_date');
             $table->string('telefone');
             $table->string('endereco');
             $table->timestamps();

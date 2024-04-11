@@ -15,9 +15,9 @@ class CustomerController extends Controller
      */
     public function index(): View
     {
-        $customers = Customer::latest()->paginate(5);
+        $customers = Customer::latest()->paginate(10);
         
-        return view('customers.index',compact('customers'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('customers.index',compact('customers'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
   
     /**
@@ -36,6 +36,7 @@ class CustomerController extends Controller
             'name' => 'required',
             'cpf' => 'required|regex:/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/',
             'email' => 'required',
+            'born_date' => 'required',
             'telefone' => 'required',
             'endereco' => 'required',
         ]);
