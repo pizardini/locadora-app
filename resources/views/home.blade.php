@@ -32,8 +32,8 @@
 
 @section('content')
     <div class="row">
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
+            <div class="col-lg-3 col-6 droppable">
+                <div class="small-box bg-info draggable">
                     <div class="inner">
                     <h3>{{ $productCount }}</h3>
                     <p>{{ $productCount == 1 ? 'Filme' : 'Filmes' }} no catálogo</p>
@@ -47,8 +47,8 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-warning">
+        <div class="col-lg-3 col-6 droppable">
+            <div class="small-box bg-warning draggable">
                 <div class="inner">
                     <h3>{{ $customerCount }}</h3>
                     <p>{{ $customerCount == 1 ? 'Cliente' : 'Clientes' }} cadastrados</p>
@@ -62,8 +62,8 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-success">
+        <div class="col-lg-3 col-6 droppable">
+            <div class="small-box bg-success draggable">
                 <div class="inner">
                     <h3>{{ $rentCount }}</h3>
                     <p>{{ $rentCount == 1 ? 'Filme' : 'Filmes' }} alugados</p>
@@ -79,10 +79,11 @@
 
     </div>
     <div class="row">
-    <div class="col-lg-6">
-            <div class="card">
+    <div class="col-lg-6 droppable">
+            <div class="card draggable">
                 <div class="card-header">
-                    <h3 class="card-title">Locações por Mês</h3>
+                    <h3 class="card-title">
+                    <i class="fas fa-chart-pie mr-1"></i>Locações por Mês</h3>
                 </div>
                 <div class="card-body">
                     <canvas id="rentsChart"></canvas>
@@ -99,6 +100,8 @@
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
     <script>
         $(function () {
             var ctx = document.getElementById('rentsChart').getContext('2d');
@@ -126,5 +129,14 @@
                 }
             });
         });
+
+        $(document).ready(function() {
+        $(".draggable").draggable(); // Torna os cartões arrastáveis
+        $(".droppable").droppable({ // Define a área de drop
+            drop: function(event, ui) {
+                $(this).append(ui.draggable); // Move o cartão arrastado para dentro da área de drop
+            }
+        });
+    });
     </script>
 @stop
