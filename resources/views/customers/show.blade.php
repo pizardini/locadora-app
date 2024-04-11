@@ -22,6 +22,10 @@
                         <dd>{{ $customer->name }}</dd>
                         <dt>Email</dt>
                         <dd>{{ $customer->email }}</dd>
+                        <dt>Idade</dt>
+                        <td>{{ \Carbon\Carbon::parse($customer->born_date)->age }}</td>
+                        <dt>Data de Nascimento<dt>
+                        <dd>{{ $customer->born_date }}</dd>
                         <dt>CPF</dt>
                         <dd>{{ $customer->cpf }}</dd>
                         <dt>Telefone</dt>

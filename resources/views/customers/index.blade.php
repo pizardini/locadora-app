@@ -32,6 +32,7 @@
                                 <th>#</th>
                                 <th>Nome</th>
                                 <th>Email</th>
+                                <th>Idade</th>
                                 <th>CPF</th>
                                 <th>Telefone</th>
                                 <th>Ações</th>
@@ -43,6 +44,7 @@
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $customer->name }}</td>
                                     <td>{{ $customer->email }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($customer->born_date)->age }}</td>
                                     <td>{{ $customer->cpf }}</td>
                                     <td>{{ $customer->telefone }}</td>
                                     <td>

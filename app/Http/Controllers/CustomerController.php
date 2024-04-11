@@ -72,6 +72,8 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'cpf' => 'required|regex:/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/',
+            'email' => 'required',
+            'born_date' => 'required',
             'telefone' => 'required',
             'endereco' => 'required',
         ]);

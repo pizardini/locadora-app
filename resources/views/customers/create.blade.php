@@ -32,6 +32,10 @@
                         <input type="email" class="form-control" id="email" name="email" placeholder="user@gmail.com">
                     </div>
                     <div class="form-group">
+                        <label for="born_date">Data de Nascimento</label>
+                        <input type="date" class="form-control" id="born_date" name="born_date">
+                    </div>
+                    <div class="form-group">
                         <label for="cpf">CPF</label>
                         <input type="text" class="form-control" id="cpf" name="cpf" placeholder="___.___.___-__">
                     </div>
