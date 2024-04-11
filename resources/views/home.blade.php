@@ -1,28 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in App Locadora!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
-
-
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -51,13 +26,13 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ $customerCount }}</h3>
-                    <p>{{ $customerCount == 1 ? 'Cliente' : 'Clientes' }} cadastrados</p>
+                    <p>{{ $customerCount == 1 ? 'Cliente cadastrado' : 'Clientes cadastrados' }}</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-fw fa-user"></i>
                 </div>
                 <a href="/customers" class="small-box-footer">
-                More info <i class="fas fa-fw fa-user"></i>
+                More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
         </div>
@@ -66,13 +41,13 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3>{{ $rentCount }}</h3>
-                    <p>{{ $rentCount == 1 ? 'Filme' : 'Filmes' }} alugados</p>
+                    <p>{{ $rentCount == 1 ? 'Filme alugado' : 'Filmes alugados' }}</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-fw fa-tv"></i>
                 </div>
                 <a href="/rents" class="small-box-footer">
-                More info <i class="fas fa-fw fa-user"></i>
+                More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
         </div>

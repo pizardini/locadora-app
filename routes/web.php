@@ -20,23 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('products', ProductController::class);
-Route::resource('customers', CustomerController::class);
-Route::resource('rents', RentController::class);
-
-Route::get('/rents/create/{customerId}', [RentController::class, 'create'])->name('rents.create');
-Route::get('/rents/{rent}/return', [RentController::class, 'returnRent'])->name('rents.return');
-
-
-
-
 // Solicitação de autenticação nas rotas internas
-// Route::middleware('auth')->group(function () {
-//     Route::resource('products', ProductController::class);
-//     Route::resource('customers', CustomerController::class);
-//      Route::resource('rents', CustomerController::class);
-// });
+Route::middleware('auth')->group(function () {
+    Route::resource('products', ProductController::class);
+    Route::resource('customers', CustomerController::class);
+    Route::resource('rents', CustomerController::class);
+    Route::get('/rents/create/{customerId}', [RentController::class, 'create'])->name('rents.create');
+    Route::get('/rents/{rent}/return', [RentController::class, 'returnRent'])->name('rents.return');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
