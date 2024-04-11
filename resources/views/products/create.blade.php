@@ -68,23 +68,6 @@
     var apiKey = "{{ $apiKey }}";
     var tmdbEndpoint = "{{ $tmdbEndpoint }}";
     
-    window.onload = function() {
-        fetch(`${tmdbEndpoint}movie/popular?api_key=${apiKey}&language=pt-BR&page=1`)
-            .then(response => response.json())
-            .then(data => {
-                
-                var select = document.getElementById('tmdb_id');
-                data.results.forEach(movie => {
-                    var option = document.createElement('option');
-                    option.value = movie.id;
-                    option.textContent = movie.title;
-                    select.appendChild(option);
-                });
-            })
-            .catch(error => {
-                console.error('Erro ao buscar filmes:', error);
-            });
-    };
 
     function getMovieCover() {
         var movieName = document.getElementById('name').value;
@@ -105,7 +88,7 @@
                     // Obtém o ID do primeiro filme encontrado
                     var movieId = data.results[0].id;
                     // Atualiza a capa do filme com o ID obtido
-                    updateMovieCover(movieId);
+                    updateMovieData(movieId);
                 } else {
                     alert('Nenhum filme encontrado com esse nome.');
                 }
@@ -115,7 +98,7 @@
             });
     }
 
-    function updateMovieCover(movieId) {
+    function updateMovieData(movieId) {
         var apiKey = "{{ $apiKey }}";
         var tmdbEndpoint = "{{ $tmdbEndpoint }}";
 
