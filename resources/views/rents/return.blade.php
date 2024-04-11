@@ -33,13 +33,13 @@
                     <div class="form-group">
                         <label for="product_id">Filme</label>
                         <select class="form-control" id="product_id" name="product_id" style="height: 37px" readonly>
-                            <option value="{{ $rent->product->name }}" selected>{{ $rent->product->name }}</option>
+                            <option value="{{ $rent->product->id }}" selected>{{ $rent->product->name }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="customer_id">Cliente</label>
                         <select class="form-control" id="customer_id" name="customer_id" readonly>
-                            <option value="{{ $rent->customer->name }}" selected>{{ $rent->customer->name }}</option>
+                            <option value="{{ $rent->customer->id }}" selected>{{ $rent->customer->name }}</option>
                         </select>
                     </div>
                     <div class="form-group">

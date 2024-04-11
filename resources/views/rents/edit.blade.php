@@ -32,19 +32,23 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="product_id">Filme</label>
-                        <select class="form-control" id="product_id" name="product_id" style="height: 37px" value="{{ $rent->product->name }}">
-                            <option value="{{ $rent->product->name }}">{{ $rent->product->name }}</option>
+                        <select class="form-control" id="product_id" name="product_id" style="height: 37px" >
+                            <option value="{{ $rent->product->id }}">{{ $rent->product->name }}</option>
                             @foreach($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                @if($product->id !== $rent->product->id)
+                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="customer_id">Cliente</label>
                         <select class="form-control" id="customer_id" name="customer_id" >
-                            <option value="{{ $rent->customer->name }}" selected>{{ $rent->customer->name }}</option>
+                            <option value="{{ $rent->customer->id }}">{{ $rent->customer->name }}</option>
                             @foreach($customers as $customer)
-                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @if($customer->id !== $rent->customer->id)
+                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>

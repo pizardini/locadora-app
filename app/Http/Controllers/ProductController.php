@@ -86,8 +86,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $product): RedirectResponse
     {
-        $product->delete();
-         
-        return redirect()->route('products.index')->with('success','Filme removido com sucesso.');
+        try {
+            if ($product->rents()->exists()) {
+                throw new \Exception("Este filme possui locações associadas. Por favor, exclua todas as locações antes de remover o filme.");
+            }
+    
+            $product->delete();
+    
+            return redirect()->route('products.index')->with('success', 'Filme removido com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

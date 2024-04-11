@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Product::class);
-            $table->foreignIdFor(Customer::class);
+            $table->foreignIdFor(Product::class)->constrained()->onDelete('restrict');
+            $table->foreignIdFor(Customer::class)->constrained()->onDelete('restrict');
             $table->date('rental_date')->useCurrent();
             $table->date('return_date')->nullable();
             $table->date('returned_at')->nullable();

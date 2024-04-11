@@ -18,7 +18,15 @@ class RentController extends Controller
     {
         $rents = Rent::latest()->paginate(5);
 
-        return view('rents.index', compact('rents'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $activeRents = $rents->filter(function ($rent) {
+            return $rent->active;
+        });
+    
+        $inactiveRents = $rents->filter(function ($rent) {
+            return !$rent->active;
+        });
+
+        return view('rents.index', compact('rents','activeRents','inactiveRents'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -107,7 +115,7 @@ class RentController extends Controller
     {
         $request->merge([
             'total_amount' => str_replace(',', '.', $request->input('total_amount')),
-            'late_fee' => str_replace(',', '.', $request->input('late_fee')),
+            'late_fee' => $request->filled('late_fee') ? str_replace(',', '.', $request->input('late_fee')) : 0,
         ]);
 
         $request->validate([

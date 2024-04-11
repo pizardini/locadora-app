@@ -84,9 +84,17 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Customer $customer): RedirectResponse
-    {
-        $customer->delete();
-         
-        return redirect()->route('customers.index')->with('success','Cliente removido com sucesso.');
+    {    
+        try {
+            if ($customer->rents()->exists()) {
+                throw new \Exception("Este cliente possui locações associadas. Por favor, exclua todas as locações antes de remover o cliente.");
+            }
+    
+            $customer->delete();
+    
+            return redirect()->route('customers.index')->with('success', 'Cliente removido com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

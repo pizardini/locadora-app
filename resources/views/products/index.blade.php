@@ -9,6 +9,13 @@
         </div>
     @endif
 
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
+
     <div class="row">
         <div class="col-12">
             <div class="card">

@@ -46,27 +46,38 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <dl>
-                            <dt>Nome do Filme</dt>
-                            <dd>{{ $rent->product->name }}</dd>
-                            <dt>Data de Locação</dt>
-                            <dd>{{ $rent->rental_date }}</dd>
-                            <dt>Prazo de Devolução</dt>
-                            <dd>{{ $rent->return_date }}</dd>
-                            @if ($rent->active)
-                                <dt>Alugado</dt>
-                                <dd>Sim</dd>
-                                <dt>Valor Total</dt>
-                                <dd>R${{ str_replace('.', ',', $rent->total_amount) }}</dd>
-                            @else
-                                <dt>Data de Devolução</dt>
-                                <dd>{{ $rent->returned_at }}</dd>
-                                <dt>Taxa de Atraso</dt>
-                                <dd>R${{ str_replace('.', ',', $rent->late_fee) }}</dd>
-                                <dt>Valor Total</dt>
-                                <dd>R${{ str_replace('.', ',', $rent->total_amount) }}</dd>
-                            @endif
-                        </dl>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{ $rent->product->cover }}" alt="Capa do Filme" class="img-fluid" style="max-height: 300px;">
+                            </div>
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>Nome do Filme</dt>
+                                    <dd>{{ $rent->product->name }}</dd>
+                                    <dt>Data de Locação</dt>
+                                    <dd>{{ $rent->rental_date }}</dd>
+                                    @if ($rent->active)
+                                        <dt>Prazo de Devolução</dt>
+                                        <dd>{{ $rent->return_date }}</dd>
+                                        <dt>Status</dt>
+                                        <dd>Alugado</dd>
+                                        <dt>Valor Total</dt>
+                                        <dd>R${{ str_replace('.', ',', $rent->total_amount) }}</dd>
+                                        <a class="btn btn-warning" href="{{ route('rents.return', $rent->id) }}">Devolver</a>
+                                            @csrf
+                                    @else
+                                        <dt>Status</dt>
+                                        <dd>Devolvido</dd>
+                                        <dt>Data de Devolução</dt>
+                                        <dd>{{ $rent->returned_at }}</dd>
+                                        <dt>Taxa de Atraso</dt>
+                                        <dd>R${{ str_replace('.', ',', $rent->late_fee) }}</dd>
+                                        <dt>Valor Total</dt>
+                                        <dd>R${{ str_replace('.', ',', $rent->total_amount) }}</dd>
+                                    @endif
+                                </dl>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
