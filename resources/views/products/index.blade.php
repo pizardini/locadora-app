@@ -4,13 +4,16 @@
     @include('products.layout')
 
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5>{{ $message }}</h5>
         </div>
     @endif
 
     @if (session('error'))
-    <div class="alert alert-danger">
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-ban"></i> Erro!</h5>
         {{ session('error') }}
     </div>
     @endif

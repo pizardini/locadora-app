@@ -32,39 +32,63 @@
 
 @section('content')
     <div class="row">
-    <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                    <h3>{{ $productCount }}</h3>
+                    <p>{{ $productCount == 1 ? 'Filme' : 'Filmes' }} no catálogo</p>
+                    </div>
+                <div class="icon">
+                    <i class="fas fa-fw fa-film"></i>
+                </div>
+                <a href="/products" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
 
-    <div class="small-box bg-info">
-    <div class="inner">
-    <h3>{{ $productCount }}</h3>
-    <p>{{ $productCount == 1 ? 'Filme' : 'Filmes' }} no catálogo</p>
-    </div>
-    <div class="icon">
-    <i class="fas fa-fw fa-film"></i>
-    </div>
-    <a href="/products" class="small-box-footer">
-    More info <i class="fas fa-arrow-circle-right"></i>
-    </a>
-    </div>
-    </div>
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>{{ $customerCount }}</h3>
+                    <p>{{ $customerCount == 1 ? 'Cliente' : 'Clientes' }} cadastrados</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-fw fa-user"></i>
+                </div>
+                <a href="/customers" class="small-box-footer">
+                More info <i class="fas fa-fw fa-user"></i>
+                </a>
+            </div>
+        </div>
 
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>{{ $rentCount }}</h3>
+                    <p>{{ $rentCount == 1 ? 'Filme' : 'Filmes' }} alugados</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-fw fa-tv"></i>
+                </div>
+                <a href="/rents" class="small-box-footer">
+                More info <i class="fas fa-fw fa-user"></i>
+                </a>
+            </div>
+        </div>
 
-    <div class="col-lg-3 col-6">
-
-    <div class="small-box bg-warning">
-    <div class="inner">
-    <h3>{{ $customerCount }}</h3>
-    <p>{{ $productCount == 1 ? 'Cliente' : 'Clientes' }} cadastrados</p>
     </div>
-    <div class="icon">
-    <i class="fas fa-user-plus"></i>
-    </div>
-    <a href="/customers" class="small-box-footer">
-    More info <i class="fas fa-fw fa-user"></i>
-    </a>
-    </div>
-    </div>
-
+    <div class="row">
+    <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Locações por Mês</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="rentsChart"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
@@ -74,5 +98,33 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(function () {
+            var ctx = document.getElementById('rentsChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {!! json_encode($months) !!},
+                    datasets: [{
+                        label: 'Quantidade de Locações',
+                        data: {!! json_encode($rentsPerMonth) !!},
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'black'
+                            }
+        }
+                    }
+                }
+            });
+        });
+    </script>
 @stop
