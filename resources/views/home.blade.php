@@ -32,8 +32,8 @@
 
 @section('content')
     <div class="row">
-            <div class="col-lg-3 col-6 droppable">
-                <div class="small-box bg-info draggable">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
                     <div class="inner">
                     <h3>{{ $productCount }}</h3>
                     <p>{{ $productCount == 1 ? 'Filme' : 'Filmes' }} no catálogo</p>
@@ -47,8 +47,8 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-6 droppable">
-            <div class="small-box bg-warning draggable">
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ $customerCount }}</h3>
                     <p>{{ $customerCount == 1 ? 'Cliente' : 'Clientes' }} cadastrados</p>
@@ -62,8 +62,8 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-6 droppable">
-            <div class="small-box bg-success draggable">
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
                 <div class="inner">
                     <h3>{{ $rentCount }}</h3>
                     <p>{{ $rentCount == 1 ? 'Filme' : 'Filmes' }} alugados</p>
@@ -79,8 +79,8 @@
 
     </div>
     <div class="row">
-    <div class="col-lg-6 droppable">
-            <div class="card draggable">
+    <div class="col-lg-6">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
                     <i class="fas fa-chart-pie mr-1"></i>Locações por Mês</h3>
