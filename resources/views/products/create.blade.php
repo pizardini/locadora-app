@@ -49,7 +49,7 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                     <a class="btn btn-outline-primary" href="{{ route('products.index') }}"> Voltar</a>
-                    <button type="button" class="btn btn-warning" onclick="getMovieCover()">Pegar Infos do filme</button>
+                    <button type="button" class="btn btn-warning" onclick="getMovieData()">Pegar Infos do filme</button>
                 </div>
             </form>
         </div>
@@ -69,10 +69,8 @@
     var tmdbEndpoint = "{{ $tmdbEndpoint }}";
     
 
-    function getMovieCover() {
+    function getMovieData() {
         var movieName = document.getElementById('name').value;
-        var apiKey = "{{ $apiKey }}";
-        var tmdbEndpoint = "{{ $tmdbEndpoint }}";
 
         if (!movieName) {
             alert('Por favor, insira o nome do filme.');
@@ -99,13 +97,29 @@
     }
 
     function updateMovieData(movieId) {
-        var apiKey = "{{ $apiKey }}";
-        var tmdbEndpoint = "{{ $tmdbEndpoint }}";
-
-        // Solicita os detalhes do filme com o ID fornecido
+        // Solicita os detalhes do filme com o ID fornecido na API em português
         fetch(`${tmdbEndpoint}movie/${movieId}?api_key=${apiKey}&language=pt-BR`)
             .then(response => response.json())
             .then(data => {
+                // Verifica se a sinopse está disponível em português
+                var overview = data.overview;
+                if (!overview) {
+                    // Se a sinopse não estiver disponível em português, solicita na API em inglês
+                    fetch(`${tmdbEndpoint}movie/${movieId}?api_key=${apiKey}&language=en-US`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Atualiza a sinopse com os dados obtidos na API em inglês
+                            overview = data.overview;
+                            document.getElementById('overview').value = overview;
+                        })
+                        .catch(error => {
+                            console.error('Erro ao buscar sinopse do filme em inglês:', error);
+                        });
+                } else {
+                    // Se a sinopse estiver disponível em português, atualiza normalmente
+                    document.getElementById('overview').value = overview;
+                }
+
                 // Atualiza a capa do filme na página
                 var movieCoverUrl = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
                 var movieCoverImage = document.getElementById('movieCoverImage');
@@ -114,17 +128,14 @@
 
                 document.getElementById('coverInput').value = movieCoverUrl;
 
-            var overview = document.getElementById('overview');
-            overview.value = data.overview;
+                var releaseDate = new Date(data.release_date);
+                var releaseYear = releaseDate.getFullYear();
 
-            var releaseDate = new Date(data.release_date);
-            var releaseYear = releaseDate.getFullYear();
-
-            var release = document.getElementById('release');
-            release.value = releaseYear;
+                var release = document.getElementById('release');
+                release.value = releaseYear;
             })
             .catch(error => {
-                console.error('Erro ao buscar capa do filme:', error);
+                console.error('Erro ao buscar detalhes do filme em português:', error);
             });
     }
 </script>

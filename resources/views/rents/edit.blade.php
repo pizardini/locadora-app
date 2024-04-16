@@ -67,8 +67,8 @@
                     <div class="form-group">
                         <label for="active">Ativa</label>
                         <select class="form-control" id="active" name="active" value="{{ $rent->active }}">
-                            <option value="1">Sim</option>
-                            <option value="0">Não</option>
+                        <option value="1" {{ $rent->active == 1 ? 'selected' : '' }}>Sim</option>
+                        <option value="0" {{ $rent->active == 0 ? 'selected' : '' }}>Não</option>
                         </select>
                     </div>
                     <div class="form-group">
